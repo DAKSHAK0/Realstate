@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import type { LocationHighlight } from '@/data/properties';
 
@@ -53,4 +54,5 @@ export function LocationHighlights({ items, city }: LocationHighlightsProps) {
     </div>
   );
 }
+
 

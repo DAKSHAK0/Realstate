@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 
 interface AgentCardProps {
@@ -24,4 +25,5 @@ export function AgentCard({ name, role, focus }: AgentCardProps) {
     </motion.div>
   );
 }
+
 

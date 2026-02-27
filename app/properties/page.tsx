@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { properties } from '@/data/properties';
 import { SectionHeader } from '@/components/section-header';
@@ -78,18 +79,24 @@ export default function PropertiesPage({ searchParams }: PropertiesPageProps) {
             title="A curated view of luxury and investment-grade homes."
             subtitle="Use filters to align by location, typology and budget. Each listing is presented with clarity so you can shortlist with confidence."
           />
-          <SearchBar />
+          <Suspense fallback={<div className="h-14 bg-aurum-surface/50 rounded-full animate-pulse" />}>
+            <SearchBar />
+          </Suspense>
         </div>
       </section>
 
       <section className="section-padding pt-4">
         <div className="container-max grid gap-8 lg:grid-cols-[0.9fr,2fr]">
           <div className="hidden lg:block">
-            <FilterSidebar />
+            <Suspense fallback={<div className="h-64 bg-aurum-surface/50 rounded-xl animate-pulse" />}>
+              <FilterSidebar />
+            </Suspense>
           </div>
           <div className="space-y-8">
             <div className="lg:hidden">
-              <FilterSidebar mobile />
+              <Suspense fallback={<div className="h-12 bg-aurum-surface/50 rounded-full animate-pulse" />}>
+                <FilterSidebar mobile />
+              </Suspense>
             </div>
             <div className="flex items-center justify-between text-xs text-aurum-textMuted">
               <p>

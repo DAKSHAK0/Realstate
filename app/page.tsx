@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { properties } from '@/data/properties';
 import { HeroImage } from '@/components/hero-image';
@@ -57,7 +58,9 @@ export default function HomePage() {
           <HeroImage />
         </div>
         <div className="container-max mt-8">
-          <SearchBar />
+          <Suspense fallback={<div className="h-14 bg-aurum-surface/50 rounded-full animate-pulse" />}>
+            <SearchBar />
+          </Suspense>
         </div>
       </section>
 

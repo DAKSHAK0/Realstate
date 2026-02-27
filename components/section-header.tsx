@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
@@ -30,4 +31,5 @@ export function SectionHeader({
     </motion.div>
   );
 }
+
 

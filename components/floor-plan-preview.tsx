@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 import type { FloorPlan } from '@/data/properties';
 
@@ -33,4 +34,5 @@ export function FloorPlanPreview({ plans }: FloorPlanPreviewProps) {
     </div>
   );
 }
+
 

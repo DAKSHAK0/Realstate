@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView, animate } from 'framer-motion';
 
 interface StatsCounterProps {
   label: string;
@@ -14,22 +13,20 @@ interface StatsCounterProps {
 export function StatsCounter({ label, suffix = '+', value, decimals = 0 }: StatsCounterProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const inView = useInView(ref, { once: true, margin: '-20%' });
-  const controls = useAnimation();
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    controls.start({ count: value, transition: { duration: 1.4, ease: 'easeOut' } });
-  }, [inView, controls, value]);
-
-  useEffect(() => {
-    controls.stop();
-    controls.set({ count: 0 });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    controls.start(({ count }: any) => {
-      setDisplay(Number(count?.toFixed?.(decimals) ?? value));
-    });
-  }, [controls, value, decimals]);
+    if (inView) {
+      const controls = animate(0, value, {
+        duration: 1.4,
+        ease: 'easeOut',
+        onUpdate(v) {
+          setDisplay(Number(v.toFixed(decimals)));
+        },
+      });
+      return () => controls.stop();
+    }
+  }, [inView, value, decimals]);
 
   return (
     <div ref={ref} className="space-y-1">
@@ -43,4 +40,3 @@ export function StatsCounter({ label, suffix = '+', value, decimals = 0 }: Stats
     </div>
   );
 }
-

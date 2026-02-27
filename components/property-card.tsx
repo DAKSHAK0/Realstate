@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -78,4 +79,5 @@ export function PropertyCard({ property, variant = 'default' }: PropertyCardProp
     </motion.article>
   );
 }
+
 

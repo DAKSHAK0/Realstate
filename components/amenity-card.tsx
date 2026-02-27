@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 
 interface AmenityCardProps {
@@ -18,4 +19,5 @@ export function AmenityCard({ label }: AmenityCardProps) {
     </motion.div>
   );
 }
+
 

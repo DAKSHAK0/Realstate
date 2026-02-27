@@ -1,4 +1,4 @@
-\"use client\";
+"use client";
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -29,17 +29,17 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
   };
 
   const sidebar = (
-    <div className=\"space-y-6\">
-      <div className=\"space-y-2\">
-        <p className=\"text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted\">
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted">
           Location
         </p>
         <select
-          className=\"input bg-aurum-surface\"
+          className="input bg-aurum-surface"
           defaultValue={searchParams.get('location') || ''}
           onChange={(e) => applyFilter({ location: e.target.value || null })}
         >
-          <option value=\"\">Any</option>
+          <option value="">Any</option>
           {locations.map((loc) => (
             <option key={loc} value={loc}>
               {loc}
@@ -48,16 +48,16 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
         </select>
       </div>
 
-      <div className=\"space-y-2\">
-        <p className=\"text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted\">
+      <div className="space-y-2">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted">
           Property Type
         </p>
         <select
-          className=\"input bg-aurum-surface\"
+          className="input bg-aurum-surface"
           defaultValue={searchParams.get('type') || ''}
           onChange={(e) => applyFilter({ type: e.target.value || null })}
         >
-          <option value=\"\">Any</option>
+          <option value="">Any</option>
           {propertyTypes.map((t) => (
             <option key={t} value={t}>
               {t}
@@ -66,26 +66,25 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
         </select>
       </div>
 
-      <div className=\"space-y-2\">
-        <p className=\"text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted\">
+      <div className="space-y-2">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted">
           Status
         </p>
-        <div className=\"flex flex-wrap gap-2\">
+        <div className="flex flex-wrap gap-2">
           {['Ready', 'New Launch', 'Under Construction'].map((label) => {
             const value = label.replace(' ', '-');
             const active = status === value;
             return (
               <button
                 key={value}
-                type=\"button\"
+                type="button"
                 onClick={() =>
                   applyFilter({ status: active ? null : (value as string) })
                 }
-                className={`px-3 py-1 rounded-full text-xs border ${
-                  active
+                className={`px-3 py-1 rounded-full text-xs border ${active
                     ? 'border-aurum-accent bg-aurum-accent/10 text-aurum-accent'
                     : 'border-aurum-border text-aurum-textMuted'
-                }`}
+                  }`}
               >
                 {label}
               </button>
@@ -94,41 +93,41 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
         </div>
       </div>
 
-      <div className=\"space-y-2\">
-        <p className=\"text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted\">
+      <div className="space-y-2">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-aurum-textMuted">
           Sort By
         </p>
         <select
-          className=\"input bg-aurum-surface\"
+          className="input bg-aurum-surface"
           value={sort}
           onChange={(e) => applyFilter({ sort: e.target.value })}
         >
-          <option value=\"featured\">Featured</option>
-          <option value=\"newest\">Newest</option>
-          <option value=\"price-asc\">Price Low to High</option>
-          <option value=\"price-desc\">Price High to Low</option>
+          <option value="featured">Featured</option>
+          <option value="newest">Newest</option>
+          <option value="price-asc">Price Low to High</option>
+          <option value="price-desc">Price High to Low</option>
         </select>
       </div>
     </div>
   );
 
   if (!mobile) {
-    return <aside className=\"card-surface p-5 space-y-6\">{sidebar}</aside>;
+    return <aside className="card-surface p-5 space-y-6">{sidebar}</aside>;
   }
 
   return (
     <>
       <button
-        type=\"button\"
+        type="button"
         onClick={() => setOpen(true)}
-        className=\"btn-secondary w-full justify-center text-xs tracking-[0.22em] uppercase md:hidden\"
+        className="btn-secondary w-full justify-center text-xs tracking-[0.22em] uppercase md:hidden"
       >
         Filters &amp; Sort
       </button>
       <AnimatePresence>
         {open && (
           <motion.div
-            className=\"fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden\"
+            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -138,17 +137,17 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.35 }}
-              className=\"absolute right-0 top-0 h-full w-full max-w-sm bg-aurum-surface p-6 overflow-y-auto\"
+              className="absolute right-0 top-0 h-full w-full max-w-sm bg-aurum-surface p-6 overflow-y-auto"
             >
-              <div className=\"flex items-center justify-between mb-6\">
-                <p className=\"text-xs tracking-[0.22em] uppercase text-aurum-textMuted\">
+              <div className="flex items-center justify-between mb-6">
+                <p className="text-xs tracking-[0.22em] uppercase text-aurum-textMuted">
                   Refine Search
                 </p>
                 <button
-                  type=\"button\"
+                  type="button"
                   onClick={() => setOpen(false)}
-                  className=\"h-8 w-8 rounded-full border border-aurum-border flex items-center justify-center text-xs\"
-                  aria-label=\"Close filters\"
+                  className="h-8 w-8 rounded-full border border-aurum-border flex items-center justify-center text-xs"
+                  aria-label="Close filters"
                 >
                   ✕
                 </button>
@@ -161,4 +160,3 @@ export function FilterSidebar({ mobile = false }: FilterSidebarProps) {
     </>
   );
 }
-

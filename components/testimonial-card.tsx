@@ -1,3 +1,4 @@
+"use client";
 import { motion } from 'framer-motion';
 
 interface TestimonialCardProps {
@@ -23,4 +24,5 @@ export function TestimonialCard({ quote, name, role }: TestimonialCardProps) {
     </motion.figure>
   );
 }
+
 
