@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  @apply bg-aurum-background text-aurum-text antialiased;
+}
+
+body {
+  @apply min-h-screen;
+  background-image: theme('backgroundImage.aurum-radial'),
+    theme('backgroundImage.aurum-gradient');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+::selection {
+  @apply bg-aurum-accent/30 text-aurum-text;
+}
+
+.container-max {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+.card-surface {
+  @apply bg-aurum-surface/80 backdrop-blur-xl border border-aurum-border/70 rounded-3xl shadow-aurum-soft;
+}
+
+.pill {
+  @apply inline-flex items-center rounded-full border border-aurum-border/70 bg-aurum-surface/80 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-aurum-textMuted;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-aurum-accent px-6 py-3 text-sm font-medium text-black transition hover:bg-aurum-accentSoft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurum-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-aurum-background;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-full border border-aurum-border bg-transparent px-6 py-3 text-sm font-medium text-aurum-text transition hover:bg-aurum-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurum-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-aurum-background;
+}
+
+.input {
+  @apply w-full rounded-full border border-aurum-border bg-aurum-surface/60 px-4 py-3 text-sm text-aurum-text placeholder:text-aurum-textMuted focus:outline-none focus:ring-2 focus:ring-aurum-accent/60 focus:border-aurum-accent/70;
+}
+
+.textarea {
+  @apply w-full rounded-2xl border border-aurum-border bg-aurum-surface/60 px-4 py-3 text-sm text-aurum-text placeholder:text-aurum-textMuted focus:outline-none focus:ring-2 focus:ring-aurum-accent/60 focus:border-aurum-accent/70;
+}
+
+.section-padding {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.h1 {
+  @apply font-display text-3xl sm:text-4xl lg:text-5xl tracking-tight;
+}
+
+.h2 {
+  @apply font-display text-2xl sm:text-3xl lg:text-4xl tracking-tight;
+}
+
+.h3 {
+  @apply font-display text-xl sm:text-2xl tracking-tight;
+}
+
+.body-large {
+  @apply text-base sm:text-lg text-aurum-textMuted leading-relaxed;
+}
+
+.badge-soft {
+  @apply inline-flex items-center rounded-full bg-aurum-accent/10 px-3 py-1 text-xs font-medium text-aurum-accent;
+}
+
+.grid-auto-fit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
